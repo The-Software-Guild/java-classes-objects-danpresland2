@@ -5,8 +5,11 @@ import java.util.List;
 
 public class DVDLibraryView {
 
-    private UserIO io = new UserIOConsoleImpl();
-    private final String bannerDecoration = " ----- ";
+    private UserIO io;
+
+    public DVDLibraryView(UserIO io){
+        this.io = io;
+    }
 
     public  int printMenuAndGetSelection(){
         displaySeparator();
@@ -28,7 +31,7 @@ public class DVDLibraryView {
     }
 
     private String decoratedBanner(String msg) {
-        return "%s%s%s".formatted(bannerDecoration, msg, bannerDecoration);
+        return " %1$s %2$s %1$s ".formatted("-----", msg);
     }
 
     public DVD getNewDVD() {
