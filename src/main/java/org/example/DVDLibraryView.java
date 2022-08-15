@@ -98,7 +98,7 @@ public class DVDLibraryView {
     }
 
     public void displayDVD(DVD dvd) {
-        io.println("----------");
+        io.println("——————————");
 
         io.println(dvd.getTitle());
         io.println(dvd.getReleaseDate().toString());
@@ -107,7 +107,7 @@ public class DVDLibraryView {
         io.println(dvd.getStudio());
         io.println(dvd.getUserNote());
 
-        io.println("----------");
+        io.println("——————————");
     }
 
     public void displayUnknownCommandBanner() {
@@ -133,11 +133,6 @@ public class DVDLibraryView {
     }
 
     public void displayBannerOpen(String msg) {
-//        displaySeparator();
         io.println("\n" + decoratedBanner(msg));
-    }
-
-    public void displayBannerClose() {
-        //displaySeparator();
     }
 }

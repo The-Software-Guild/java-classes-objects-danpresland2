@@ -79,8 +79,6 @@ public class DVDLibraryController {
 
         List<DVD> dvdList = dao.getAllDVDs();
         view.displayDVDList(dvdList);
-
-        view.displayBannerClose();
     }
 
     private void displayDVD() throws DVDLibraryDaoException {
@@ -89,8 +87,6 @@ public class DVDLibraryController {
         String dvdTitle = view.getDVDTitleChoice();
         DVD dvd = dao.getDVD(dvdTitle);
         view.displayDVD(dvd);
-
-        view.displayBannerClose();
     }
 
     private void searchDVD() throws DVDLibraryDaoException {
@@ -107,7 +103,6 @@ public class DVDLibraryController {
         }
 
         view.displayDVDList(results);
-        view.displayBannerClose();
 
     }
 
