@@ -10,8 +10,8 @@ import java.util.List;
 
 public class DVDLibraryController {
 
-    private DVDLibraryView view;
-    private DVDLibraryDaoFileImpl dao;
+    private final DVDLibraryView view;
+    private final DVDLibraryDaoFileImpl dao;
 
     public DVDLibraryController(DVDLibraryDaoFileImpl dao, DVDLibraryView view){
         this.dao = dao;
@@ -20,40 +20,22 @@ public class DVDLibraryController {
 
     public void run(){
         boolean keepGoing = true;
-        int menuSelection = 0;
+        int menuSelection;
 
         try {
             while (keepGoing) {
                 menuSelection = getMenuSelection();
 
-                switch (menuSelection){
-                    case 1:
-                        createDVD();
-                        break;
-                    case 2:
-                        removeDVD();
-                        break;
-                    case 3:
-                        listDVDs();
-                        break;
-                    case 4:
-                        displayDVD();
-                        break;
-                    case 5:
-                        searchDVD();
-                        break;
-                    case 6:
-                        loadLibrary();
-                        break;
-                    case 7:
-                        saveLibrary();
-                        break;
-                    case 0:
-                        keepGoing = false;
-                        break;
-                    default:
-                        unknownCommand();
-                        break;
+                switch (menuSelection) {
+                    case 1 -> createDVD();
+                    case 2 -> removeDVD();
+                    case 3 -> listDVDs();
+                    case 4 -> displayDVD();
+                    case 5 -> searchDVD();
+                    case 6 -> loadLibrary();
+                    case 7 -> saveLibrary();
+                    case 0 -> keepGoing = false;
+                    default -> unknownCommand();
                 }
             }
             exitMessage();
@@ -85,7 +67,7 @@ public class DVDLibraryController {
     private void listDVDs() throws DVDLibraryDaoException {
         view.displayDisplayAllBanner();
 
-        List<DVD> dvdList = dao.getAllDVDs();
+        ArrayList<DVD> dvdList = dao.getAllDVDs();
         view.displayDVDList(dvdList);
     }
 

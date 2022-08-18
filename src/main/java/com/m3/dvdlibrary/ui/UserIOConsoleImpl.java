@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class UserIOConsoleImpl implements UserIO{
 
-    private Scanner myScanner = new Scanner(System.in);
+    private final Scanner myScanner = new Scanner(System.in);
 
 
     @Override

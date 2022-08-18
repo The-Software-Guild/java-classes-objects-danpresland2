@@ -15,14 +15,13 @@ public class DVDLibraryDaoFileImpl implements DVDLibaryDao {
 
 
     @Override
-    public DVD addDVD(String title, DVD dvd) throws DVDLibraryDaoException {
-        DVD newDVD = dvds.put(title, dvd);
-        return newDVD;
+    public DVD addDVD(String title, DVD dvd) {
+        return dvds.put(title, dvd);
     }
 
     @Override
-    public List<DVD> getAllDVDs() throws DVDLibraryDaoException {
-        return new ArrayList(dvds.values());
+    public ArrayList<DVD> getAllDVDs() {
+        return new ArrayList<>(dvds.values());
     }
 
     @Override
@@ -32,9 +31,8 @@ public class DVDLibraryDaoFileImpl implements DVDLibaryDao {
     }
 
     @Override
-    public DVD removeDVD(String title) throws DVDLibraryDaoException {
-        DVD removedDVD = dvds.remove(title);
-        return removedDVD;
+    public DVD removeDVD(String title) {
+        return dvds.remove(title);
     }
 
 
@@ -76,7 +74,7 @@ public class DVDLibraryDaoFileImpl implements DVDLibaryDao {
         try {
             scanner = new Scanner(new BufferedReader(new FileReader(LIBRARY_FILE)));
         } catch (FileNotFoundException e) {
-            System.out.println(e);
+            e.printStackTrace();
             throw new DVDLibraryDaoException("Could not load library data into memory", e);
         }
 
@@ -104,7 +102,7 @@ public class DVDLibraryDaoFileImpl implements DVDLibaryDao {
         }
 
         String dvdAsText;
-        List<DVD> dvdList = this.getAllDVDs();
+        ArrayList<DVD> dvdList = this.getAllDVDs();
 
         for (DVD currDVD : dvdList) {
             dvdAsText = marshallDVD(currDVD);
