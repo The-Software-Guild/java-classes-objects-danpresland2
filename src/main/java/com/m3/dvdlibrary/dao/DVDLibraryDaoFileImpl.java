@@ -55,7 +55,7 @@ public class DVDLibraryDaoFileImpl implements DVDLibaryDao {
         String[] dvdTokens = dvdAsText.split(DELIMITER);
 
         String title = dvdTokens[0];
-        LocalDate releaseDate = LocalDate.parse("2005-11-12");
+        LocalDate releaseDate = LocalDate.parse(dvdTokens[1]);
         String mpaaRating = dvdTokens[2];
         String directorsName = dvdTokens[3];
         String studio = dvdTokens[4];
