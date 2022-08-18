@@ -1,4 +1,6 @@
-package org.example;
+package com.m3.dvdlibrary.ui;
+
+import com.m3.dvdlibrary.dto.DVD;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -12,7 +14,7 @@ public class DVDLibraryView {
     }
 
     public  int printMenuAndGetSelection(){
-        displaySeparator();
+        io.println("\n" + "*".repeat(50));
         io.println("""
                 ╭—————————————╮
                 │   Choices   │
@@ -55,20 +57,17 @@ public class DVDLibraryView {
     }
 
     public void displayCreateDVDBanner(){
-//        io.println(decoratedBanner("CREATE DVD"));
         displayBannerOpen("CREATE DVD");
 
     }
 
     public void displayCreateSuccessBanner(){
-//        io.println(decoratedBanner("DVD CREATED SUCCESSFULLY"));
         displayBannerOpen("DVD CREATED SUCCESSFULLY");
 
     }
 
 
     public void displayRemoveDVDBanner() {
-//        io.println(decoratedBanner("REMOVE DVD"));
         displayBannerOpen("REMOVE DVD");
 
     }
@@ -83,7 +82,6 @@ public class DVDLibraryView {
     }
 
     public void displayDisplayAllBanner() {
-//        io.println(decoratedBanner("DISPLAY ALL"));
         displayBannerOpen("DISPLAY ALL");
 
     }
@@ -95,7 +93,6 @@ public class DVDLibraryView {
     }
 
     public void displayDisplayDVDBanner() {
-//        io.println(decoratedBanner("DISPLAY DVD"));
         displayBannerOpen("DISPLAY DVD");
 
     }
@@ -114,25 +111,18 @@ public class DVDLibraryView {
     }
 
     public void displayUnknownCommandBanner() {
-//        io.println(decoratedBanner("unknown command"));
         displayBannerOpen("unknown command");
 
     }
 
 
     public void displayExitBanner() {
-//        io.println(decoratedBanner("bye x"));
         displayBannerOpen("bye x");
 
     }
 
     public void displaySearchDVDBanner() {
-//        io.println(decoratedBanner("SEARCH FOR DVD"));
         displayBannerOpen("SEARCH FOR DVD");
-    }
-
-    public void displaySeparator(){
-        io.println("\n" + "*".repeat(50));
     }
 
     public void displayBannerOpen(String msg) {

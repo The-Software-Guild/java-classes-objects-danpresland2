@@ -1,4 +1,4 @@
-package org.example;
+package com.m3.dvdlibrary.dao;
 
 public class DVDLibraryDaoException extends Exception {
 

@@ -1,4 +1,6 @@
-package org.example;
+package com.m3.dvdlibrary.dao;
+
+import com.m3.dvdlibrary.dto.DVD;
 
 import java.util.List;
 

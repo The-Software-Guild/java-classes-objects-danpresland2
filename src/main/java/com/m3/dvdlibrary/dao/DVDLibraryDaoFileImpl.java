@@ -1,4 +1,6 @@
-package org.example;
+package com.m3.dvdlibrary.dao;
+
+import com.m3.dvdlibrary.dto.DVD;
 
 import java.io.*;
 import java.time.LocalDate;
@@ -43,7 +45,7 @@ public class DVDLibraryDaoFileImpl implements DVDLibaryDao {
         dvdAsText += aDVD.getMpaaRating() + DELIMITER;
         dvdAsText += aDVD.getDirectorsName() + DELIMITER;
         dvdAsText += aDVD.getStudio() + DELIMITER;
-        dvdAsText += aDVD.getUserNote() + DELIMITER;
+        dvdAsText += aDVD.getUserNote();
 
         return dvdAsText;
     }

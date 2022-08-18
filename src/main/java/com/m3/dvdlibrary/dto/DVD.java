@@ -1,4 +1,4 @@
-package org.example;
+package com.m3.dvdlibrary.dto;
 
 import java.time.LocalDate;
 
