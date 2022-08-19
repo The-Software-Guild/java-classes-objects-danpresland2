@@ -21,15 +21,16 @@ public class DVDLibraryView {
                 ╰—————————————╯
                 1. Create DVD
                 2. Remove DVD
-                3. List DVDs
-                4. Display DVD
-                5. Search for DVD
-                6. Load library
-                7. Save library
+                3. Edit DVD
+                4. List DVDs
+                5. Display DVD
+                6. Search for DVD
+                7. Load library
+                8. Save library
                 0. Quit."""
                 );
 
-        return io.readInt("Enter choice :: ", 1, 5);
+        return io.readInt("Enter choice :: ", 0, 8);
     }
 
     private String decoratedBanner(String msg) {
@@ -44,11 +45,37 @@ public class DVDLibraryView {
         String studio = io.readString("Studio :: ");
         String userNote = io.readString("User notes :: ");
 
-        DVD currentDVD = new DVD(title, releaseDate, directorsName, studio);
+        DVD currentDVD = new DVD(title, releaseDate);
         currentDVD.setMpaaRating(mpaaRating);
         currentDVD.setUserNote(userNote);
+        currentDVD.setDirectorsName(directorsName);
+        currentDVD.setStudio(studio);
 
         return currentDVD;
+    }
+
+    public DVD editDVD(DVD dvd) {
+        String title = dvd.getTitle();
+        LocalDate releaseDate = dvd.getReleaseDate();
+        String mpaaRating = dvd.getMpaaRating();
+        String directorsName = dvd.getDirectorsName();
+        String studio = dvd.getStudio();
+        String userNote = dvd.getUserNote();
+
+        displayBanner(title);
+
+        String newMpaaRating = io.readString("mpaa Rating '%s' -> ", mpaaRating);
+        String newDirectorsName = io.readString("Directors Name '%s' -> ", directorsName);
+        String newStudio = io.readString("Studio '%s' -> ", studio);
+        String newUserNote = io.readString("User notes '%s' -> ", userNote);
+
+        DVD editedDVD = new DVD(title, releaseDate);
+        editedDVD.setMpaaRating(newMpaaRating);
+        editedDVD.setDirectorsName(newDirectorsName);
+        editedDVD.setStudio(newStudio);
+        editedDVD.setUserNote(newUserNote);
+
+        return editedDVD;
     }
 
     public void displayErrorMessage(String eMsg) {
@@ -130,5 +157,9 @@ public class DVDLibraryView {
 
     public void displayBanner(String msg) {
         io.println("\n" + decoratedBanner(msg));
+    }
+
+    public void displayEditDVDBanner() {
+        displayBanner("EDIT DVD");
     }
 }

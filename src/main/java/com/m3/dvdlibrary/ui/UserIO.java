@@ -12,5 +12,7 @@ public interface UserIO {
 
     String readString(String prompt);
 
+    String readString(String prompt, String def);
+
     LocalDate readLocalDate(String prompt);
 }

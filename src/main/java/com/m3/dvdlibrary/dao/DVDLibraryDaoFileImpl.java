@@ -60,10 +60,12 @@ public class DVDLibraryDaoFileImpl implements DVDLibaryDao {
         String studio = dvdTokens[4];
         String userNote = dvdTokens[5];
 
-        DVD dvdFromFile = new DVD(title, releaseDate, directorsName, studio);
+        DVD dvdFromFile = new DVD(title, releaseDate);
 
         dvdFromFile.setMpaaRating(mpaaRating);
         dvdFromFile.setUserNote(userNote);
+        dvdFromFile.setDirectorsName(directorsName);
+        dvdFromFile.setStudio(studio);
 
         return dvdFromFile;
     }

@@ -7,15 +7,13 @@ public class DVD {
     private final String title;
     private final LocalDate releaseDate;
     private String mpaaRating;
-    private final String directorsName;
-    private final String studio;
+    private String directorsName;
+    private String studio;
     private String userNote;
 
-    public DVD(String title, LocalDate releaseDate, String directorsName, String studio) {
+    public DVD(String title, LocalDate releaseDate) {
         this.title = title;
         this.releaseDate = releaseDate;
-        this.directorsName = directorsName;
-        this.studio = studio;
     }
 
     public String getTitle() {
@@ -51,4 +49,11 @@ public class DVD {
     }
 
 
+    public void setDirectorsName(String directorsName) {
+        this.directorsName = directorsName;
+    }
+
+    public void setStudio(String studio) {
+        this.studio = studio;
+    }
 }

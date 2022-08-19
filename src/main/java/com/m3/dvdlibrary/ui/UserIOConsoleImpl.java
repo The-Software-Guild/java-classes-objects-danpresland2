@@ -21,8 +21,13 @@ public class UserIOConsoleImpl implements UserIO{
     @Override
     public int readInt(String prompt, int min, int max) {
         print(prompt);
-        int value = myScanner.nextInt();
-        myScanner.nextLine();//clear newline character from scanner
+
+        int value;
+        do {
+            value = myScanner.nextInt();
+            myScanner.nextLine();//clear newline character from scanner
+        } while (value < min || value > max);
+
         return value;
     }
 
@@ -30,6 +35,12 @@ public class UserIOConsoleImpl implements UserIO{
     public String readString(String prompt) {
         print(prompt);
         return myScanner.nextLine();
+    }
+
+    @Override
+    public String readString(String prompt, String def) {
+        String str = readString(String.format(prompt, def));
+        return str.equals("") ? def : str;
     }
 
     @Override

@@ -29,11 +29,12 @@ public class DVDLibraryController {
                 switch (menuSelection) {
                     case 1 -> createDVD();
                     case 2 -> removeDVD();
-                    case 3 -> listDVDs();
-                    case 4 -> displayDVD();
-                    case 5 -> searchDVD();
-                    case 6 -> loadLibrary();
-                    case 7 -> saveLibrary();
+                    case 3 -> editDVD();
+                    case 4 -> listDVDs();
+                    case 5 -> displayDVD();
+                    case 6 -> searchDVD();
+                    case 7 -> loadLibrary();
+                    case 8 -> saveLibrary();
                     case 0 -> keepGoing = false;
                     default -> unknownCommand();
                 }
@@ -63,6 +64,19 @@ public class DVDLibraryController {
         String dvdTitle = view.getDVDTitleChoice();
         DVD removedDVD = dao.removeDVD(dvdTitle);
         view.displayRemoveResult(removedDVD);
+    }
+
+    private void editDVD() throws DVDLibraryDaoException {
+        view.displayEditDVDBanner();
+
+        String dvdTitle = view.getDVDTitleChoice();
+        DVD uneditedDVD = dao.getDVD(dvdTitle);
+
+        DVD editedDVD = view.editDVD(uneditedDVD);
+
+        dao.removeDVD(dvdTitle);
+        dao.addDVD(dvdTitle, editedDVD);
+
     }
 
     private void listDVDs() throws DVDLibraryDaoException {
