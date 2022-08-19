@@ -57,18 +57,21 @@ public class DVDLibraryView {
     }
 
     public void displayCreateDVDBanner(){
-        displayBannerOpen("CREATE DVD");
+        displayBanner("CREATE DVD");
 
     }
 
     public void displayCreateSuccessBanner(){
-        displayBannerOpen("DVD CREATED SUCCESSFULLY");
+        displayBanner("DVD CREATED SUCCESSFULLY");
 
     }
 
+    public void displayDVDAlreadyExistsBanner() {
+        displayBanner("DVD NOT CREATED : TITLE ALREADY EXISTS");
+    }
 
     public void displayRemoveDVDBanner() {
-        displayBannerOpen("REMOVE DVD");
+        displayBanner("REMOVE DVD");
 
     }
 
@@ -82,7 +85,7 @@ public class DVDLibraryView {
     }
 
     public void displayDisplayAllBanner() {
-        displayBannerOpen("DISPLAY ALL");
+        displayBanner("DISPLAY ALL");
 
     }
 
@@ -93,7 +96,7 @@ public class DVDLibraryView {
     }
 
     public void displayDisplayDVDBanner() {
-        displayBannerOpen("DISPLAY DVD");
+        displayBanner("DISPLAY DVD");
 
     }
 
@@ -111,21 +114,21 @@ public class DVDLibraryView {
     }
 
     public void displayUnknownCommandBanner() {
-        displayBannerOpen("unknown command");
+        displayBanner("unknown command");
 
     }
 
 
     public void displayExitBanner() {
-        displayBannerOpen("bye x");
+        displayBanner("bye x");
 
     }
 
     public void displaySearchDVDBanner() {
-        displayBannerOpen("SEARCH FOR DVD");
+        displayBanner("SEARCH FOR DVD");
     }
 
-    public void displayBannerOpen(String msg) {
+    public void displayBanner(String msg) {
         io.println("\n" + decoratedBanner(msg));
     }
 }

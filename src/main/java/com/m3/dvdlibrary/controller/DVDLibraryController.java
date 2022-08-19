@@ -53,8 +53,9 @@ public class DVDLibraryController {
     private void createDVD() throws DVDLibraryDaoException {
         view.displayCreateDVDBanner();
         DVD newDVD = view.getNewDVD();
-        dao.addDVD(newDVD.getTitle(), newDVD);
-        view.displayCreateSuccessBanner();
+        DVD createDVDResult = dao.addDVD(newDVD.getTitle(), newDVD);
+        if (createDVDResult == newDVD) view.displayCreateSuccessBanner();
+        else view.displayDVDAlreadyExistsBanner();
     }
 
     private void removeDVD() throws DVDLibraryDaoException {

@@ -16,7 +16,8 @@ public class DVDLibraryDaoFileImpl implements DVDLibaryDao {
 
     @Override
     public DVD addDVD(String title, DVD dvd) {
-        return dvds.put(title, dvd);
+        if (dvds.containsKey(title)) return dvds.get(title);
+        else return dvds.put(title, dvd);
     }
 
     @Override
