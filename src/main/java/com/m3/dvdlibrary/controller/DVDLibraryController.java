@@ -55,7 +55,8 @@ public class DVDLibraryController {
         view.displayCreateDVDBanner();
         DVD newDVD = view.getNewDVD();
         DVD createDVDResult = dao.addDVD(newDVD.getTitle(), newDVD);
-        if (createDVDResult == newDVD) view.displayCreateSuccessBanner();
+
+        if (createDVDResult.equals(newDVD)) view.displayCreateSuccessBanner();
         else view.displayDVDAlreadyExistsBanner();
     }
 

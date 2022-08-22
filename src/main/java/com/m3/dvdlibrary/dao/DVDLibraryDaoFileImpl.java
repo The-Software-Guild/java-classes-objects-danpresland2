@@ -6,9 +6,9 @@ import java.io.*;
 import java.time.LocalDate;
 import java.util.*;
 
-public class DVDLibraryDaoFileImpl implements DVDLibaryDao {
+public class DVDLibraryDaoFileImpl implements DVDLibraryDao {
 
-    private Map<String, DVD> dvds = new HashMap<>();
+    private final Map<String, DVD> dvds = new HashMap<>();
 
     public static final String LIBRARY_FILE = "src/main/resources/library.txt";
     public static final String DELIMITER = "::";
@@ -16,8 +16,8 @@ public class DVDLibraryDaoFileImpl implements DVDLibaryDao {
 
     @Override
     public DVD addDVD(String title, DVD dvd) {
-        if (dvds.containsKey(title)) return dvds.get(title);
-        else return dvds.put(title, dvd);
+        if (!dvds.containsKey(title)) dvds.put(title, dvd);
+        return dvds.get(title);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.m3.dvdlibrary.dto;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class DVD {
 
@@ -55,5 +56,18 @@ public class DVD {
 
     public void setStudio(String studio) {
         this.studio = studio;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DVD dvd = (DVD) o;
+        return Objects.equals(title, dvd.title) && Objects.equals(releaseDate, dvd.releaseDate) && Objects.equals(mpaaRating, dvd.mpaaRating) && Objects.equals(directorsName, dvd.directorsName) && Objects.equals(studio, dvd.studio) && Objects.equals(userNote, dvd.userNote);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(title, releaseDate, mpaaRating, directorsName, studio, userNote);
     }
 }

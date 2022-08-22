@@ -4,7 +4,7 @@ import com.m3.dvdlibrary.dto.DVD;
 
 import java.util.List;
 
-public interface DVDLibaryDao {
+public interface DVDLibraryDao {
 
     DVD addDVD(String title, DVD dvd) throws DVDLibraryDaoException;
 
