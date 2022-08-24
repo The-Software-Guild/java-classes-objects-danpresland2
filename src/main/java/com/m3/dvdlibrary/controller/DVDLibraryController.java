@@ -96,20 +96,11 @@ public class DVDLibraryController {
     }
 
     private void searchDVD() throws DVDLibraryDaoException {
-        //todo: move search to dao/model?
         view.displaySearchDVDBanner();
 
         String dvdTitle = view.getDVDTitleChoice();
-        List<DVD> results = new ArrayList<>();
-
-        for (DVD dvd : dao.getAllDVDs()){
-            if (dvd.getTitle().toLowerCase().contains(dvdTitle.toLowerCase())){
-                results.add(dvd);
-            }
-        }
-
+        List<DVD> results = dao.searchDVD(dvdTitle);
         view.displayDVDList(results);
-
     }
 
     private void loadLibrary() throws DVDLibraryDaoException {

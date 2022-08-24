@@ -10,6 +10,8 @@ public interface DVDLibraryDao {
 
     List<DVD> getAllDVDs() throws DVDLibraryDaoException;
 
+    List<DVD> searchDVD(String searchTerm);
+
     DVD getDVD(String title) throws DVDLibraryDaoException;
 
     DVD removeDVD(String title) throws DVDLibraryDaoException;
