@@ -26,18 +26,6 @@ public class DVDLibraryDaoFileImpl implements DVDLibraryDao {
     }
 
     @Override
-    public List<DVD> searchDVD(String searchTerm) {
-        List<DVD> results = new ArrayList<>();
-        for (DVD dvd : getAllDVDs()) {
-            if (dvd.getTitle().toLowerCase().contains(searchTerm.toLowerCase())) {
-                results.add(dvd);
-            }
-        }
-
-        return results;
-    }
-
-    @Override
     public DVD getDVD(String title) throws DVDLibraryDaoException {
         if (!dvds.containsKey(title)) throw new DVDLibraryDaoException("DVD not found");
         return dvds.get(title);
