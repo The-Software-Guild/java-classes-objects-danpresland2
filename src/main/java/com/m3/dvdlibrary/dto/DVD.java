@@ -70,4 +70,8 @@ public class DVD {
     public int hashCode() {
         return Objects.hash(title, releaseDate, mpaaRating, directorsName, studio, userNote);
     }
+
+    public Long getAge() {
+        return ( LocalDate.now().toEpochDay() - getReleaseDate().toEpochDay() ) / 365;
+    }
 }

@@ -107,7 +107,7 @@ public class DVDLibraryController {
             case 3 -> searchByMPAARating();
             case 4 -> searchByDirector();
             case 5 -> searchByStudio();
-            case 6 -> findAverageAge();
+            case 6 -> findAverageMovieAge();
             case 7 -> findNewestMovie();
             case 8 -> findOldestMovie();
             default -> unknownCommand();
@@ -139,15 +139,16 @@ public class DVDLibraryController {
         view.displayDVDList(dao.searchBySinceDate(date));
     }
 
-    private void findAverageAge() {
-
+    private void findAverageMovieAge() {
+        view.displayAverageMovieAge(dao.findAverageMovieAge());
     }
 
     private void findNewestMovie() {
+        view.displayDVD(dao.findNewestMovie());
     }
 
     private void findOldestMovie() {
-
+        view.displayDVD(dao.findOldestMovie());
     }
 
     private void loadLibrary() throws DVDLibraryDaoException {

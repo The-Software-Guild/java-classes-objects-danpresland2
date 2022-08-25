@@ -195,4 +195,8 @@ public class DVDLibraryView {
     public LocalDate getDate() {
         return io.readLocalDate("Date (yyyy-MM-dd) :: ");
     }
+
+    public void displayAverageMovieAge(Double averageMovieAge) {
+        io.println( String.format("Average movie age: %.1fyrs", averageMovieAge));
+    }
 }

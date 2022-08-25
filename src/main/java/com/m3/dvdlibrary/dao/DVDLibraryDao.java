@@ -27,4 +27,10 @@ public interface DVDLibraryDao {
     List<DVD> searchByTitle(String title);
 
     List<DVD> searchBySinceDate(LocalDate date);
+
+    DVD findOldestMovie();
+
+    DVD findNewestMovie();
+
+    Object findAverageMovieAge();
 }

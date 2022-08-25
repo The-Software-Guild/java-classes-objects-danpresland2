@@ -73,6 +73,23 @@ public class DVDLibraryDaoFileImpl implements DVDLibraryDao {
         return dvds.values().stream().filter(dvd -> dvd.getReleaseDate().compareTo(date) > 0).toList();
     }
 
+    @Override
+    public DVD findOldestMovie() {
+        return dvds.values().stream().
+                max(Comparator.comparing(DVD::getAge)).orElse(null);
+    }
+
+    @Override
+    public DVD findNewestMovie() {
+        return dvds.values().stream().
+                min(Comparator.comparing(DVD::getAge)).orElse(null);
+    }
+
+    @Override
+    public Double findAverageMovieAge() {
+        return dvds.values().stream().mapToLong(DVD::getAge).average().orElse(-1);
+    }
+
 
     private String marshallDVD(DVD aDVD){
         String dvdAsText = aDVD.getTitle() + DELIMITER;
