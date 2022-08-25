@@ -44,7 +44,6 @@ public class DVDLibraryController {
         } catch (DVDLibraryDaoException e) {
             view.displayErrorMessage(e.getMessage());
         }
-
     }
 
     private int getMenuSelection(){
