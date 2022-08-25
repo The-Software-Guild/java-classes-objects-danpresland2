@@ -162,4 +162,37 @@ public class DVDLibraryView {
     public void displayEditDVDBanner() {
         displayBanner("EDIT DVD");
     }
+
+    public void displaySearchTypes(){
+        io.println("""
+                1. Search for DVDs by DVD title
+                2. Movies released since x date
+                3. Movies with x MPAA rating
+                4. Movies by x director
+                5. Movies by x stuiod
+                6. Find average age of movies
+                7. Find newest movie
+                8. Find oldest movie
+                """);
+
+    }
+
+    public int getSearchType() {
+        int choice;
+
+        do {
+            try {choice = Integer.parseInt(io.readString("Enter choice :: "));}
+            catch (NumberFormatException e) {choice = -1;}
+        } while ( (choice < 1 || choice > 8) && (choice != -1) );
+
+        return choice;
+    }
+
+    public String getSearchTerm(String s) {
+        return io.readString(s);
+    }
+
+    public LocalDate getDate() {
+        return io.readLocalDate("Date (yyyy-MM-dd) :: ");
+    }
 }

@@ -48,6 +48,31 @@ public class DVDLibraryDaoFileImpl implements DVDLibraryDao {
         return dvds.remove(title);
     }
 
+    @Override
+    public List<DVD> searchByStudio(String studio) {
+        return dvds.values().stream().filter(dvd -> dvd.getStudio().contains(studio)).toList();
+    }
+
+    @Override
+    public List<DVD> searchByDirector(String director) {
+        return dvds.values().stream().filter(dvd -> dvd.getDirectorsName().contains(director)).toList();
+    }
+
+    @Override
+    public List<DVD> searchByRating(String rating) {
+        return dvds.values().stream().filter(dvd -> dvd.getMpaaRating().contains(rating)).toList();
+    }
+
+    @Override
+    public List<DVD> searchByTitle(String title) {
+        return dvds.values().stream().filter(dvd -> dvd.getTitle().contains(title)).toList();
+    }
+
+    @Override
+    public List<DVD> searchBySinceDate(LocalDate date) {
+        return dvds.values().stream().filter(dvd -> dvd.getReleaseDate().compareTo(date) > 0).toList();
+    }
+
 
     private String marshallDVD(DVD aDVD){
         String dvdAsText = aDVD.getTitle() + DELIMITER;

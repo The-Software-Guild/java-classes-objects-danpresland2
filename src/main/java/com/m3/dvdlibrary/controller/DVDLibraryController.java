@@ -1,12 +1,12 @@
 package com.m3.dvdlibrary.controller;
 
+import com.m3.dvdlibrary.dao.DVDLibraryDaoException;
 import com.m3.dvdlibrary.dao.DVDLibraryDaoFileImpl;
 import com.m3.dvdlibrary.dto.DVD;
-import com.m3.dvdlibrary.dao.DVDLibraryDaoException;
 import com.m3.dvdlibrary.ui.DVDLibraryView;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
 
 public class DVDLibraryController {
 
@@ -98,9 +98,56 @@ public class DVDLibraryController {
     private void searchDVD() throws DVDLibraryDaoException {
         view.displaySearchDVDBanner();
 
+        view.displaySearchTypes();
+        int searchType = view.getSearchType();
+
+        switch (searchType) {
+            case 1 -> searchByTitle();
+            case 2 -> searchSinceDate();
+            case 3 -> searchByMPAARating();
+            case 4 -> searchByDirector();
+            case 5 -> searchByStudio();
+            case 6 -> findAverageAge();
+            case 7 -> findNewestMovie();
+            case 8 -> findOldestMovie();
+            default -> unknownCommand();
+        }
+    }
+
+    private void searchByStudio() {
+        String studio = view.getSearchTerm("Studio :: ");
+        view.displayDVDList(dao.searchByStudio(studio));
+    }
+
+    private void searchByDirector() {
+        String director = view.getSearchTerm("Director :: ");
+        view.displayDVDList(dao.searchByDirector(director));
+    }
+
+    private void searchByMPAARating() {
+        String rating = view.getSearchTerm("Rating :: ");
+        view.displayDVDList(dao.searchByRating(rating));
+    }
+
+    private void searchByTitle() {
         String dvdTitle = view.getDVDTitleChoice();
-        List<DVD> results = dao.searchDVD(dvdTitle);
-        view.displayDVDList(results);
+        view.displayDVDList(dao.searchByTitle(dvdTitle));
+    }
+
+    private void searchSinceDate() {
+        LocalDate date = view.getDate();
+        view.displayDVDList(dao.searchBySinceDate(date));
+    }
+
+    private void findAverageAge() {
+
+    }
+
+    private void findNewestMovie() {
+    }
+
+    private void findOldestMovie() {
+
     }
 
     private void loadLibrary() throws DVDLibraryDaoException {
