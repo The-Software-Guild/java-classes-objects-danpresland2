@@ -32,5 +32,5 @@ public interface DVDLibraryDao {
 
     DVD findNewestMovie();
 
-    Object findAverageMovieAge();
+    Double findAverageMovieAge();
 }
